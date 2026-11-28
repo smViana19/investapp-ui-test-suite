@@ -8,6 +8,7 @@ from playwright.sync_api import Page, expect
 from pages.navbar_component import NavbarComponent
 from pages.login_modal_page import LoginModalPage
 from pages.portfolio_page import PortfolioPage
+from pages.yield_simulator_page import YieldSimulatorPage
 
 
 UI_BASE_URL = os.getenv(
@@ -15,8 +16,8 @@ UI_BASE_URL = os.getenv(
     "http://investapp-frontend.s3-website-us-east-1.amazonaws.com"
 )
 
-TEST_USER = os.getenv("TEST_USER", "user30")
-TEST_PASSWORD = os.getenv("TEST_PASSWORD", "ttJNcvUWs6B@")
+TEST_USER = os.getenv("TEST_USER", "user06")
+TEST_PASSWORD = os.getenv("TEST_PASSWORD", "BTXuEC5zdvFh")
 
 
 @pytest.fixture(scope="session")
@@ -37,6 +38,10 @@ def login_modal(page: Page) -> LoginModalPage:
 @pytest.fixture
 def portfolio_page(page: Page) -> PortfolioPage:
     return PortfolioPage(page)
+
+@pytest.fixture
+def yield_page(page: Page) -> YieldSimulatorPage:
+    return YieldSimulatorPage(page)
 
 
 @pytest.fixture
